@@ -1,0 +1,30 @@
+{
+  "name": "wavebackend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WaveLearning/waveBackEnd.git"
+  },
+  "author": "Yagnik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WaveLearning/waveBackEnd/issues"
+  },
+  "homepage": "https://github.com/WaveLearning/waveBackEnd#readme",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "cors": "^2.8.4",
+    "elasticsearch": "^15.1.1",
+    "express": "^4.16.3",
+    "http": "0.0.0",
+    "lodash": "^4.17.10",
+    "log-timestamp": "*",
+    "nconf": "*",
+    "pug": "^2.0.3"
+  }
+}
