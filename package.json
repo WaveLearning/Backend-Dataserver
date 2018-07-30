@@ -31,7 +31,8 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "fix": "eslint --fix ."
+    "fix": "eslint --fix .",
+    "start": "node ./bin/www"
   },
   "pre-commit": [
     "fix",
