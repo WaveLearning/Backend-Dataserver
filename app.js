@@ -1,11 +1,13 @@
 var express   = require('express');
 var bodyParser = require('body-parser');
+var logger = require('morgan');
 
 var index = require('./routes/index');
 
 //create an express app
 let app = express();
 
+app.use(logger('dev'));
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(express.static(__dirname + '/public'));
@@ -44,9 +46,3 @@ app.use(function (err, req, res) {
 });
 
 module.exports = app;
-
-// app.set('port', (process.env.PORT || 5000));
-
-// app.listen(app.get('port'), function() {
-//   console.info('Node app is running on port', app.get('port'));
-// });
