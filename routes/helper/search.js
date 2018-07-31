@@ -1,5 +1,5 @@
 var elasticsearch = require('elasticsearch');
-var config = require("./../../../config");
+var config = require("./../../config");
 
 var client = new elasticsearch.Client({
     host: `https://${config.elasticUser}:${config.elasticPW}@${config.elasticHost}:${config.elasticPort}`
@@ -10,7 +10,7 @@ module.exports = function(req, res, next, queryObj){
     let count = 0;
     client.search({
         index: 'wavelearning',
-        type: "_doc",
+        type: "students",
         scroll: '60s',
         size: 10000,
         body: {

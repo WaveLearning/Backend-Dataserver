@@ -1,11 +1,4 @@
-// var elasticsearch = require('elasticsearch');
-// var config = require("../../config");
-
-// var client = new elasticsearch.Client({
-//     host: `https://${config.elasticUser}:${config.elasticPW}@${config.elasticHost}:${config.elasticPort}`
-// })
-
-var search = require("./helper/search");
+var search = require("./../helper/search");
 
 exports.getAllStudents = function(req, res, next){
     let matchQuery = {
