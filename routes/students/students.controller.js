@@ -2,7 +2,7 @@ var elasticsearch = require('elasticsearch');
 var config = require("../../config");
 
 var client = new elasticsearch.Client({
-    host: `http://${config.elasticUser}:${config.elasticPW}@${config.elasticHost}:${config.elasticPort}`
+    host: `https://${config.elasticUser}:${config.elasticPW}@${config.elasticHost}:${config.elasticPort}`
 })
 
 exports.getAllStudents = function(req, res, next){
@@ -19,18 +19,18 @@ exports.getAllStudents = function(req, res, next){
                 }
             }
         }
-    }, function getMoreUntilDone(err, res){
+    }, function getMoreUntilDone(err, data){
         if(err) next(err);
 
-        if(res != null && res.hits != null){
-            res.hits.hits.forEach(hit => {
+        if(data != null && data.hits != null){
+            data.hits.hits.forEach(hit => {
                 students.push(hit);
+                count++;
             })
-            count++;
-            if(res.hits.total !== count){
+            if(data.hits.total !== count){
                 //now we can call scroll over and over
                 client.scroll({
-                    scrollId: res._scroll_id,
+                    scrollId: data._scroll_id,
                     scroll: '60s'
                 }, getMoreUntilDone)
             } else {
