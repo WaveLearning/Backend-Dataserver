@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 
 var index = require('./routes/index');
+var studentsRouter = require('./routes/students');
 
 //create an express app
 let app = express();
@@ -14,6 +15,7 @@ app.use(express.static(__dirname + '/public'));
 
 //routing
 app.use('/', index);
+app.use('/students', studentsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -22,27 +24,29 @@ app.use(function (req, res, next) {
     next(err);
 });
 
+/* eslint-disable no-unused-vars */
 // error handlers
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-    app.use(function (err, req, res) {
+    app.use(function (err, req, res, next) {
         res.status(err.status || 500);
         res.json({
             message: err.message,
-            error: err
+            error: err.stack
         });
     });
 }
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function (err, req, res) {
+app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.json({
         message: err.message,
         error: {}
     });
 });
+/* eslint-disable no-unused-vars */
 
 module.exports = app;
