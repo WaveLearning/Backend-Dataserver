@@ -14,7 +14,6 @@ var http = require('http');
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
-app.set('secPort', port+443); //443 is chosen as the default port for HTTPS!!!!!
 
 /**
  * Create HTTP server.
