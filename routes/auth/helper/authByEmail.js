@@ -7,6 +7,7 @@ var client = new elasticsearch.Client({
 })
 
 /**
+ * This function is for authenticating the user by email only, ignoring the password!!
  * @param {string} email is the email address
  * @param {function} hitFunc is a function which is executed when the passed email address exits in the elasticsearch
  * @param {function} missFunc is a function which is executed when the passed email address doesn't exist in the elasticsearch
@@ -14,8 +15,8 @@ var client = new elasticsearch.Client({
  */
 module.exports = function(email, hitFunc, missFunc, next){
     client.search({
-        index: 'wavelearning',
-        type: "students",
+        index: config.elasticIndex,
+        type: config.elasticDocType,
         body: {
             query: {
                 term: { //term query for exact match. On the contrary, match query for fuzzy macth

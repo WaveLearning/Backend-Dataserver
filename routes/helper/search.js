@@ -9,10 +9,10 @@ module.exports = function(req, res, next, queryObj){
     let students = [];
     let count = 0;
     client.search({
-        index: 'wavelearning',
-        type: "students",
-        scroll: '60s',
-        size: 10000,
+        index: config.elasticIndex,
+        type: config.elasticDocType,
+        scroll: config.elasticScroll,
+        size: config.elasticSize,
         body: {
             query: queryObj
         }
@@ -28,7 +28,7 @@ module.exports = function(req, res, next, queryObj){
                 //now we can call scroll over and over
                 client.scroll({
                     scrollId: data._scroll_id,
-                    scroll: '60s'
+                    scroll: config.elasticScroll
                 }, getMoreUntilDone)
             } else {
                 res.json(students);
