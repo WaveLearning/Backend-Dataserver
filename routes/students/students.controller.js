@@ -6,7 +6,7 @@ exports.getAllStudents = function(req, res, next){
         }
     };
 
-    search(req, res, next, matchQuery);
+    search(req, res, next, matchQuery, (students) => {res.json(students)});
 }
 
 exports.searchStudents = function(req, res, next){
@@ -24,5 +24,5 @@ exports.searchStudents = function(req, res, next){
         match: {}
     };
     matchQuery['match'][field] = query;
-    search(req, res, next, matchQuery);
+    search(req, res, next, matchQuery, (students) => {res.json(students)});
 }

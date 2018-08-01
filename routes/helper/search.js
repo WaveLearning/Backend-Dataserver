@@ -5,7 +5,15 @@ var client = new elasticsearch.Client({
     host: `https://${config.elasticUser}:${config.elasticPW}@${config.elasticHost}:${config.elasticPort}`
 })
 
-module.exports = function(req, res, next, queryObj){
+/**
+ *
+ * @param {object} req
+ * @param {object} res
+ * @param {object} next
+ * @param {object} queryObj is the query obejct for elastic search and it can be macth query, term query, bool query, etc
+ * @param {function} callback is executed after retrieving all data.
+ */
+module.exports = function(req, res, next, queryObj, callback){
     let students = [];
     let count = 0;
     client.search({
@@ -31,7 +39,7 @@ module.exports = function(req, res, next, queryObj){
                     scroll: config.elasticScroll
                 }, getMoreUntilDone)
             } else {
-                res.json(students);
+                callback(students)
             }
         } else {
             next(new Error("Error: response returned a null value from getAllStudents"));
