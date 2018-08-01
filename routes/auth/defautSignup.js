@@ -53,7 +53,7 @@ module.exports = function(req, res, next){
                     status_code: 200,
                     data: doc
                 })
-            }). catch((err) => {
+            }).catch((err) => {
                 next(err);
             })
         }
