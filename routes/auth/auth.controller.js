@@ -1,4 +1,5 @@
 var authenticate = require("./defaultAuth");
+var signup = require("./defautSignup");
 
 exports.login = function(req, res, next){
     let credentials = req.body;
@@ -13,7 +14,9 @@ exports.login = function(req, res, next){
     authenticate(req, res, next, credentials);
 }
 
-// exports.signup = function(req, res, next){
-
-// }
+exports.signup = function(req, res, next){
+    //Todo adding validation for request body
+    //assume the request body is in the format of {first_name:"..", last_name:"...", email:"..", github:"..", linkedin: "...", password: ".."}
+    signup(req, res, next);
+}
 
