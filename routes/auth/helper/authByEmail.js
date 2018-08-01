@@ -1,5 +1,5 @@
 var elasticsearch = require('elasticsearch');
-var config = require("./../../config");
+var config = require("./../../../config");
 var assert = require('assert');
 
 var client = new elasticsearch.Client({
@@ -31,7 +31,7 @@ module.exports = function(email, hitFunc, missFunc, next){
         if(data.hits.total === 1){
             hitFunc(data);
         } else{
-            missFunc();
+            missFunc(client);
         }
     })
 }

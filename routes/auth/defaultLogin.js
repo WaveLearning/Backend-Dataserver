@@ -1,4 +1,4 @@
-var authByEmail = require("./authByEmail");
+var authByEmail = require("./helper/authByEmail");
 
 /*
 * Default auth method is very simple. It just macthes the email address, and ignores the password
