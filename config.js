@@ -6,5 +6,17 @@ module.exports = {
     elasticIndex: "wavelearning",
     elasticDocType: "students",
     elasticSize: 10000,
-    elasticScroll: "60s" //Tell the elasticsearch to keep the search context open for the specified time
+    elasticScroll: "60s", //Tell the elasticsearch to keep the search context open for the specified time
+    searchableFields: [
+        "employee_id",
+        "first_name",
+        "last_name",
+        "email",
+        "skills",
+        "job_title",
+        "location",
+        "github",
+        "linkedin",
+        "school"
+    ]
 }

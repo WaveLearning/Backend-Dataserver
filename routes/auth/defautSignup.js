@@ -17,7 +17,7 @@ module.exports = function (req, res, next) {
 
     let missFunc = (client) => {
         let doc = {
-            emplyee_id: parseInt(Math.random() * 1000000),
+            employee_id: parseInt(Math.random() * 1000000), //The typo was here, but nosql db didn't complain as it doesn't enforce the schema
             first_name: signupForm.first_name,
             last_name: signupForm.last_name,
             email: signupForm.email,
